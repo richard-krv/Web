@@ -52,6 +52,16 @@ namespace WebAppCore
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            // Add custom Dependency Injection services.
+            
+            // creates one instance across all http requests from all consumers
+            services.AddSingleton<IInventoryFacadeService, InventoryFacadeService>();
+            // creates one instance per each http request
+            services.AddScoped<IRequestInfoService, RequestInfoService>();
+            // creates an instance every time for every controller even within one http request
+            services.AddTransient<IViberSender, AuthMessageSender>();
+            services.AddTransient<IInventoryStateService, InventoryStateService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Inventory Page";
+}
+
+<div class="container">
+    <div class="navbar-collapse collapse">
+        @Html.ActionLink("Seach", "Index", "Search", new { Area = "Search" }, null) |
+        @Html.ActionLink("Data Analysis", "Index", "Data", new { Area = "DataAnalysis" }, null)
+    </div>
+</div>
+<hr />
+
+<div class="container">
+    <ul class="list-group">
+        <li>
+            @Html.Partial("SingletonDetails", @ViewData["SingletonServiceData"])
+        </li>
+        <li>
+            @Html.Partial("ScopedDetails", @ViewData["ScopedServiceData"])
+        </li>
+        <li>
+            @Html.Partial("ScopedDetails", @ViewData["ScopedServiceData2"])
+        </li>
+        <li>
+            @Html.Partial("TransientDetails", @ViewData["TransientServiceData"])
+        </li>
+        <li>
+            @Html.Partial("TransientDetails", @ViewData["TransientServiceData2"])
+        </li>
+    </ul>
+</div>
